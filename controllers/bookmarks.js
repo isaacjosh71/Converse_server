@@ -4,7 +4,7 @@ const Job = require('../models/job');
 
 module.exports = {
     createBookmarks: async(req, res)=>{
-      const jobId = req.body.Id;
+      const jobId = req.body.job;
       const userId = req.user.id;
       
       try{
@@ -13,7 +13,7 @@ module.exports = {
         if(!job){
             return res.status(400).json({message: 'Job not found'});
         }
-        const newBookmark = new Bookmark({job: jobId, user:userId});
+        const newBookmark = new Bookmark({job: jobId, userId:userId});
 
         const saveBookmark = await newBookmark.save();
 

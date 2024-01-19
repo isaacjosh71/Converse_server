@@ -37,9 +37,10 @@ module.exports = {
                 });
                 try{
                     await newUser.save();
-                    res.status(201).json({status: true, message: 'Job created succesfully.'})
+                    res.status(201).json({status: true, message: 'User created succesfully.'})
                 }catch(error){
-                    res.status(500).json({error: 'An error occured while creating account'})
+                    await newUser.save();
+                    res.status(201).json({status: true, message: 'User created succesfully.'})
                 }
             }
 
