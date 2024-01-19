@@ -5,6 +5,7 @@ const dotenv = require('dotenv');
 const mongoose = require('mongoose');
 const jobRouter = require('./routes/job')
 const authRouter = require('./routes/auth')
+const bookmarkRouter = require('./routes/bookmark')
 const bodyParser = require('body-parser')
 
 dotenv.config();
@@ -25,9 +26,10 @@ mongoose.connect(process.env.MONGO_URL).then(()=> console.log('connect to DB')).
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({extended: true}))
 
-//api string added to baseUrl
+//api string added to baseUrl.... routers
 app.use('/api/jobs', jobRouter)
 app.use('/api/', authRouter)
+app.use('/api/bookmarks', bookmarkRouter)
 
 app.get('/', (req, res)=> res.send('Hello World!'))
 app.listen(process.env.PORT || port, ()=> console.log(process.env.PORT))
