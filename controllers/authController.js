@@ -39,6 +39,7 @@ module.exports = {
                     await newUser.save();
                     res.status(201).json({status: true, message: 'User created succesfully.'})
                 }catch(error){
+                    console.log(error);
                     await newUser.save();
                     res.status(201).json({status: true, message: 'User created succesfully.'})
                 }
