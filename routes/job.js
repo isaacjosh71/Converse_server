@@ -8,6 +8,7 @@ router.get('/', jobController.getAllJobs);
 
 //protected route because on agent can access to post, delete and update
 
+//: means the object users add
 router.get('/:id', jobController.getJob);
 
 router.put('/:id', jobController.updateJob);
