@@ -7,6 +7,7 @@ const jobRouter = require('./routes/job')
 const authRouter = require('./routes/auth')
 const bookmarkRouter = require('./routes/bookmark')
 const bodyParser = require('body-parser')
+const cors = require('cors')
 
 dotenv.config();
 
@@ -25,6 +26,7 @@ mongoose.connect(process.env.MONGO_URL).then(()=> console.log('connect to DB')).
 //parse body to json
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({extended: true}))
+app.use(cors())
 
 //api string added to baseUrl.... routers
 app.use('/api/jobs', jobRouter)
