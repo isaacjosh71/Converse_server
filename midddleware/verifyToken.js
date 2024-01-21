@@ -4,12 +4,12 @@ const verifyToken = (req, res, next)=>{
     const authHeader = req.headers.authorization;
 
     if(authHeader){
-        const token = authHeader.split("")[1];
+        const token = authHeader.split(" ")[1];
         //means bearer ftfyfhf => space then the next index i.e token
 
         jwt.verify(token, process.env.JWT_SEC, async(err, user)=>{
             if(err){
-                return res.status(401).json({message: 'Invalid'})
+                return res.status(401).json({message: 'Invalid token'})
             }
             req.user = user;
             next();
