@@ -57,7 +57,7 @@ module.exports = {
             const bookmark = await Bookmark.findOne({userId:userId, job: jobId})
 
             if(!bookmark){
-                return res.status(400).json({status: false, bookmarkId:'none'})
+                res.status(200).json({status:true, bookmarkId:bookmark._id})
             }
             
             res.status(200).json({status:true, bookmarkId:bookmark._id})
