@@ -6,6 +6,7 @@ const verifyToken = (req, res, next)=>{
     if(authHeader){
         const token = authHeader.split(" ")[1];
         //means bearer ftfyfhf => space then the next index i.e token
+        //double space to be precise
 
         jwt.verify(token, process.env.JWT_SEC, async(err, user)=>{
             if(err){
