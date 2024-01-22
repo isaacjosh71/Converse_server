@@ -6,6 +6,7 @@ const mongoose = require('mongoose');
 const jobRouter = require('./routes/job')
 const authRouter = require('./routes/auth')
 const bookmarkRouter = require('./routes/bookmark')
+const userRouter = require('./routes/user')
 const bodyParser = require('body-parser')
 const cors = require('cors')
 
@@ -32,6 +33,7 @@ app.use(cors())
 app.use('/api/jobs', jobRouter)
 app.use('/api/', authRouter)
 app.use('/api/bookmarks', bookmarkRouter)
+app.use('/api/users', userRouter)
 
 app.get('/', (req, res)=> res.send('Hello World!'))
 app.listen(process.env.PORT || port, ()=> console.log(process.env.PORT))
