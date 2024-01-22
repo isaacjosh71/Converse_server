@@ -43,7 +43,7 @@ module.exports = {
                 path: 'job',
                 select: '-requirements -description -createdAt -updatedAt -__v'
             })
-            return res.status(500).json({message: error})
+            res.status(200).json(bookmarks)
         }catch(error){
             return res.status(500).json({message: error.message})
         }
