@@ -123,14 +123,14 @@ module.exports = {
             const allActiveAgents = await User.aggregate([
                 {$match: {isAgent: true}},
                 {$sample: {size: 7}},
-                {
-                    $profile:{
-                        _id: 0,
-                        username: 1,
-                        profile: 1,
-                        uid: 1
-                    }
-                }
+                // {
+                //     $profile:{
+                //         _id: 0,
+                //         username: 1,
+                //         profile: 1,
+                //         uid: 1
+                //     }
+                // }
             ]);
             res.status(200).json(allActiveAgents);
         } catch (error) {
