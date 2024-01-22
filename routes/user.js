@@ -19,5 +19,14 @@ router.get('/skills', verifyAndAuth, userController.getSkills);
 
 router.delete('/skills/:id', verifyAndAuth, userController.deleteSkills);
 
+//agents
+router.post('/agents', verifyAndAuth, userController.addAgent);
+
+router.get('/agents/:uid', verifyAndAuth, userController.getAgent);
+
+router.put('/agents/:id', verifyAndAuth, userController.updateAgent);
+
+router.get('/agents', verifyAndAuth, userController.getAgents);
+
 
 module.exports = router;
