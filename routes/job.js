@@ -18,5 +18,7 @@ router.delete('/:id', jobController.deleteJob);
 // (/search/:key(param from ctrl) as seen from postman afterwards the api/jobs from index)
 router.get('/search/:key', jobController.searchJob);
 
+router.get('/agent/:uid', jobController.getAgentJobs);
+
 
 module.exports = router;
