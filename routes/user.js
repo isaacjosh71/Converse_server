@@ -17,7 +17,7 @@ router.post('/skills', verifyAndAuth, userController.addSkills);
 
 router.get('/skills', verifyAndAuth, userController.getSkills);
 
-router.delete('/skills', verifyAndAuth, userController.deleteSkills);
+router.delete('/skills/:id', verifyAndAuth, userController.deleteSkills);
 
 
 module.exports = router;
