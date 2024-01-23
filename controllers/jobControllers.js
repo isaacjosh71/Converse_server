@@ -7,7 +7,7 @@ module.exports = {
         try{
             await newJob.save();
             
-            res.status(200).json({status: true, message: 'Job created succesfully.'});
+            res.status(201).json({status: true, message: 'Job created succesfully.'});
         } catch(error){
             res.status(500).json(error);
         }
