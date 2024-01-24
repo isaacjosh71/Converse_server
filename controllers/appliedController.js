@@ -24,9 +24,10 @@ module.exports = {
                 select: '-createdAt -__v -updatedAt -description -requirements'
             });
             res.status(500).json(error); 
-            //res.status(200).json(applied);
+            // res.status(200).json(applied);
         } catch (error) {
-            res.status(500).json(error); 
+            res.status(200).json(applied);
+            // res.status(500).json(error); 
         }
     }
 }
