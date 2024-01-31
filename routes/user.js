@@ -8,8 +8,9 @@ router.get('/', verifyAndAuth, userController.getUser);
 
 router.delete('/:id', verifyAndAuth, userController.deleteUser);
 
-
 router.put('/', verifyAndAuth, userController.updateUser);
+
+router.put('/', verifyAndAuth, userController.updateProfileImage);
 
 //skills
 

@@ -14,6 +14,16 @@ module.exports = {
         }
     },
 
+    updateProfileImage: async(req, res) =>{
+        try {
+            await User.findByIdAndUpdate(req.user.id,
+                {$set: req.body}, {new:true})
+                res.status(200).json({status: true})
+        } catch (error) {
+            res.status(500).json({error: error.message})
+        }
+    },
+
     deleteUser: async(req, res) =>{
         try {
             await User.findByIdAndDelete(req.user.id)
