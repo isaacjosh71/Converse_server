@@ -38,10 +38,10 @@ module.exports = {
         const userId = req.user.id;
 
         try{
-            const bookmarks = await Bookmark.find({userId: userId}, {createdAt: 0, updatedAt:0, __v:0})//2nd brace means exclude
-            .populate({
+            //2nd brace means exclude
+            const bookmarks = await Bookmark.find({userId: userId}, {createdAt: 0, updatedAt:0, __v:0}).populate({
                 path: 'job',
-                select: '-requirements -description -createdAt -updatedAt -__v'
+                select: "-requirements -description -createdAt -updatedAt -__v"
             })
             res.status(200).json(bookmarks)
         }catch(error){
