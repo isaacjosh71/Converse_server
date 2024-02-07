@@ -10,7 +10,7 @@ module.exports = {
 
             try {
                 await newApplication.save();
-                await Job.findByIdAndUpdate(req.body.job, {$set: {hiring: false}})
+                await Job.findByIdAndUpdate(req.body.job, req.user.id, {$set: {hiring: false}})
                 res.status(200).json({status: true})
             } catch (error) {
                 res.status(500).json(error);
