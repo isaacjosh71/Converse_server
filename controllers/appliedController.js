@@ -10,7 +10,6 @@ module.exports = {
 
             try {
                 await newApplication.save();
-                await User.findByIdAndUpdate(req.user.id, {$set: {isAdmin: true}})
                 res.status(200).json({status: true})
             } catch (error) {
                 res.status(500).json(error);
