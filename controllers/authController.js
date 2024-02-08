@@ -105,7 +105,7 @@ module.exports = {
             }
 
         try {
-            await User.findIdAndUpdate(req.user.id,
+            await User.findIdAndUpdate(req.body.password,
                 {$set: CryptoJs.AES.encrypt(user.password, process.env.SECRET).toString()}, 
                 {new:true})
                 res.status(200).json({status: true})
