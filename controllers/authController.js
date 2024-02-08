@@ -35,9 +35,19 @@ module.exports = {
                     password: CryptoJs.AES.encrypt(user.password, process.env.SECRET).toString()
                     //encrypt password before sending
                 });
+
+                
+                //if match, create token
+                const userToken = jwt.sign({
+                    username: user.username,
+                    email: user.email,
+                    uid: userResponse.uid
+                }, process.env.JWT_SEC, {expiresIn: '21d'});
+
+
                 try{
                     await newUser.save();
-                    res.status(201).json({status: true, message: 'User created succesfully.'})
+                    res.status(201).json({status: true, message: 'User created succesfully.', userToken})
                 }catch(error){
                     console.log(error);
                     await newUser.save();
