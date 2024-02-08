@@ -42,7 +42,6 @@ module.exports = {
 
                 //if match, create token
                 const userToken = jwt.sign({
-                    id: userFind._id,
                     isAdmin: userFind.isAdmin,
                     isAgent: userFind.isAgent,
                     uid: userResponse.uid
