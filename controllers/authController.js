@@ -36,14 +36,11 @@ module.exports = {
                     //encrypt password before sending
                 });
 
-
-                const userFind = await User({
-                    email: user.email}, {__v: 0, createdAt: 0, updatedAt: 0, skills:0, email: 0});
-
                 //if match, create token
                 const userToken = jwt.sign({
-                    isAdmin: userFind.isAdmin,
-                    isAgent: userFind.isAgent,
+                    // id: user._id,
+                    isAdmin: newUser.isAdmin,
+                    isAgent: newUser.isAgent,
                     uid: userResponse.uid
                 }, process.env.JWT_SEC, {expiresIn: '21d'});
 
