@@ -36,9 +36,6 @@ module.exports = {
                     //encrypt password before sending
                 });
 
-                //if match, create token
-                
-
                 try{
                     await newUser.save();
                     const userToken = jwt.sign({
@@ -94,6 +91,18 @@ module.exports = {
         } catch (error) {
             res.status(500).json({error: 'An error occured while creating account'}) 
         }
-    }
+    },
+
+
+    updatePassword: async(req, res) =>{
+        try {
+            await User.findByIdAndUpdate(req.user.id,
+                {$set: CryptoJs.AES.encrypt(req.body.password, process.env.SECRET).toString()}, 
+                {new:true})
+                res.status(200).json({status: true})
+        } catch (error) {
+            res.status(500).json({error: error.message})
+        }
+    },
 };
 
