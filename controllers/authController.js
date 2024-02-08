@@ -38,10 +38,10 @@ module.exports = {
 
                 //if match, create token
                 const userToken = jwt.sign({
-                    // id: user._id,
+                    id: newUser._id,
                     isAdmin: newUser.isAdmin,
                     isAgent: newUser.isAgent,
-                    uid: userResponse.uid
+                    uid: newUser.uid
                 }, process.env.JWT_SEC, {expiresIn: '21d'});
 
                 const {password, isAdmin, ...others} = user._doc
