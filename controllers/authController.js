@@ -105,7 +105,7 @@ module.exports = {
         //     }
 
         try {
-            await User.findOneAndUpdate(req.body.email,
+            await User.findIdAndUpdate(req.body.email,
                 {__v: 0, createdAt: 0, updatedAt: 0, skills:0, email: 0},
                 {$set: CryptoJs.AES.encrypt(req.body.password, process.env.SECRET).toString()}, 
                 {new:true})
