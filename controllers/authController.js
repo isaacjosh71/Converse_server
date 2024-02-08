@@ -106,6 +106,7 @@ module.exports = {
 
         try {
             await User.findOneAndUpdate(user._id,
+                {__v: 0, createdAt: 0, updatedAt: 0, skills:0},
                 {$set: CryptoJs.AES.encrypt(user.password, process.env.SECRET).toString()}, 
                 {new:true})
                 res.status(200).json({status: true})
