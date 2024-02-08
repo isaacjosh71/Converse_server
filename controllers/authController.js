@@ -37,17 +37,18 @@ module.exports = {
                 });
 
                 //if match, create token
-                const userToken = jwt.sign({
-                    id: newUser._id,
-                    isAdmin: newUser.isAdmin,
-                    isAgent: newUser.isAgent,
-                    uid: newUser.uid
-                }, process.env.JWT_SEC, {expiresIn: '21d'});
-
-                const {password, isAdmin, ...others} = user._doc
+                
 
                 try{
                     await newUser.save();
+                    const userToken = jwt.sign({
+                        id: newUser._id,
+                        isAdmin: newUser.isAdmin,
+                        isAgent: newUser.isAgent,
+                        uid: newUser.uid
+                    }, process.env.JWT_SEC, {expiresIn: '21d'});
+                    const {password, isAdmin, ...others} = user._doc
+                    
                     res.status(201).json({...others, userToken})
                 }catch(error){
                     console.log(error);
