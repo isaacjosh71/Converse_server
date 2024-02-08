@@ -36,18 +36,23 @@ module.exports = {
                     //encrypt password before sending
                 });
 
-                
+
+                const userFind = await User.findOne({
+                    email: user.email}, {__v: 0, createdAt: 0, updatedAt: 0, skills:0, email: 0});
+
                 //if match, create token
                 const userToken = jwt.sign({
-                    username: user.username,
-                    email: user.email,
+                    id: userFind._id,
+                    isAdmin: userFind.isAdmin,
+                    isAgent: userFind.isAgent,
                     uid: userResponse.uid
                 }, process.env.JWT_SEC, {expiresIn: '21d'});
 
+                const {password, isAdmin, ...others} = user._doc
 
                 try{
                     await newUser.save();
-                    res.status(201).json({status: true, message: 'User created succesfully.', userToken})
+                    res.status(201).json({...others, userToken})
                 }catch(error){
                     console.log(error);
                     await newUser.save();
