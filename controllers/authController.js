@@ -37,7 +37,7 @@ module.exports = {
                 });
 
 
-                const userFind = await User.findOne({
+                const userFind = await User({
                     email: user.email}, {__v: 0, createdAt: 0, updatedAt: 0, skills:0, email: 0});
 
                 //if match, create token
