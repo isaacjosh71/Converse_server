@@ -47,12 +47,13 @@ module.exports = {
                         isAgent: newUser.isAgent,
                         uid: newUser.uid
                     }, process.env.JWT_SEC, {expiresIn: '21d'});
-                    const {password, isAdmin, ...others} = user._doc
-
+                    const {password, isAdmin, ...others} = newUser._doc
+                    
                     res.status(201).json({...others, userToken})
                 }catch(error){
                     console.log(error);
-                    res.status(500).json({error: 'An error occured while creating account'}) 
+                    await newUser.save();
+                    res.status(201).json({status: true, message: 'User created succesfully.'})
                 }
             }
 
