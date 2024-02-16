@@ -86,7 +86,7 @@ module.exports = {
 
                 const {password, isAdmin, ...others} = user._doc
 
-                res.status(200).json({...others, userToken})
+                res.status(200).json({...others, email, userToken})
 
         } catch (error) {
             res.status(500).json({error: 'An error occured while creating account'}) 
