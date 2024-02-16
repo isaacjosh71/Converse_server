@@ -60,7 +60,7 @@ module.exports = {
     loginUser: async (req, res)=> {
         try {
             const user = await User.findOne({
-                email: req.body.email}, {__v: 0, createdAt: 0, updatedAt: 0, skills:0, email: 0});
+                email: req.body.email}, {__v: 0, createdAt: 0, updatedAt: 0, skills:0});
                 if(!user){
                     return res.status(400).json({
                         message: 'User not found'
