@@ -49,8 +49,7 @@ module.exports = {
                     res.status(201).json({...others, userToken})
                 }catch(error){
                     console.log(error);
-                    await newUser.save();
-                    res.status(201).json({status: true, message: 'User created succesfully.'})
+                    res.status(500).json({error: 'An error occured while creating account'}) 
                 }
             }
 
